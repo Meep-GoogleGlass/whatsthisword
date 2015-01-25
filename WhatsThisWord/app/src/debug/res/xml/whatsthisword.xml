@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<trigger command="WHATS_THIS_WORD">
-        <input prompt="@string/glass_voice_prompt"/>
-</trigger>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <trigger keyword="WHATS_THIS_WORD">
+        <constraints
+            microphone="true" />
+            <input prompt="@string/glass_voice_prompt"/>
+    </trigger>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- Use the constants defined in the ContextualMenus.Command enum-->
+        <item
+            android:id="@+id/pizza_menu_item"
+            android:title="@string/find_pizza" />
+    </menu>
 </PreferenceScreen>

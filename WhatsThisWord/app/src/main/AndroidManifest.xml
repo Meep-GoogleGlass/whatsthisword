@@ -9,15 +9,16 @@
         android:theme="@style/AppTheme" >
         <service
             android:name=".TranslateWord"
-            android:icon="@drawable/ic_glass_logo"
+            android:icon="@drawable/ic_microphone_on_50"
             android:label="@string/title_activity_translate_word" >
             <intent-filter>
-                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+                <action android:name="com.google.android.glass.action.WHATS_THIS_WORD" />
+
             </intent-filter>
 
             <meta-data
-                android:name="com.google.android.glass.VoiceTrigger"
-                android:resource="@xml/voice_trigger" />
+                android:name="com.google.android.glass.WhatsThisWord"
+                android:resource="@xml/whatsthisword" />
         </service>
 
         <activity
