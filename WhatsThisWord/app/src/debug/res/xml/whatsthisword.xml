@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<trigger command="WHATS_THIS_WORD">
+        <input prompt="@string/glass_voice_prompt"/>
+</trigger>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+</PreferenceScreen>
