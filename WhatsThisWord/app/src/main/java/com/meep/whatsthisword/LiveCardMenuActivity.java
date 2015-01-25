@@ -15,6 +15,7 @@ public class LiveCardMenuActivity extends Activity {
 
     private static final int SPEECH_REQUEST = 0;
     private String spokenText;
+
     public String getSpokenText(){
         return spokenText;
     }
@@ -27,16 +28,19 @@ public class LiveCardMenuActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
-        /*if (requestCode == SPEECH_REQUEST && resultCode == RESULT_OK) {
+        if (requestCode == SPEECH_REQUEST && resultCode == RESULT_OK) {
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             spokenText = results.get(0);
             // Do something with spokenText.
             //Here is where we translate spokenText into
-        }*/
-        spokenText = "meep";
+        }
+        //spokenText = "meep";
+        Intent intent = new Intent(this, DisplayWordActivity.class);
+        intent.putExtra("spokenText", spokenText);
+        startActivity(intent);
         super.onActivityResult(requestCode, resultCode, data);
-        
+
     }
     @Override
     public void onAttachedToWindow() {

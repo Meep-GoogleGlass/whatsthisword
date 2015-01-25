@@ -14,7 +14,6 @@
             android:label="@string/title_activity_translate_word" >
             <intent-filter>
                 <action android:name="com.google.android.glass.action.WHATS_THIS_WORD" />
-
             </intent-filter>
 
             <meta-data
