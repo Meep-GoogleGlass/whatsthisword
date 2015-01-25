@@ -8,6 +8,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import java.net.URLEncoder;
+
+
 /**
  * A {@link Service} that publishes a {@link LiveCard} in the timeline.
  */
@@ -16,6 +19,17 @@ public class TranslateWord extends Service {
     private static final String LIVE_CARD_TAG = "TranslateWord";
 
     private LiveCard mLiveCard;
+
+    String url = "https://www.googleapis.com/language/translate/v2";
+    String charset = "UTF-8";  // Or in Java 7 and later, use the constant: java.nio.charset.StandardCharsets.UTF_8.name()
+    String key = APIkey;
+    String q = getSpokenText();
+    String target = "en";
+// ...
+
+    String query = String.format("param1=%s&param2=%s",
+            URLEncoder.encode(param1, charset),
+            URLEncoder.encode(param2, charset));
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -48,5 +62,10 @@ public class TranslateWord extends Service {
             mLiveCard = null;
         }
         super.onDestroy();
+    }
+
+    public String translate(String toTranslate){
+        //Todo: implement translation.
+        return toTranslate;
     }
 }

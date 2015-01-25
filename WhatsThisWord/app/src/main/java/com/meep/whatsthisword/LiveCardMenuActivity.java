@@ -2,27 +2,27 @@ package com.meep.whatsthisword;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 
 import java.util.List;
 
 /**
- * A transparent {@link Activity} displaying a "Stop" options menu to remove the {@link LiveCard}.
+ * A transparent {@link Activity} displaying a "Stop" options menu to remove the
  */
 public class LiveCardMenuActivity extends Activity {
 
     private static final int SPEECH_REQUEST = 0;
-    private String spokenText;
+    public static String spokenText;
 
-    public String getSpokenText(){
-        return spokenText;
-    }
 
-    private void displaySpeechRecognizer() {
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        startActivityForResult(intent, SPEECH_REQUEST);
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Intent tempIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        startActivityForResult(tempIntent, SPEECH_REQUEST);
     }
 
     @Override
@@ -32,22 +32,16 @@ public class LiveCardMenuActivity extends Activity {
             List<String> results = data.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             spokenText = results.get(0);
-            // Do something with spokenText.
-            //Here is where we translate spokenText into
+            Log.d("WhatsThisWord",spokenText);
         }
-        //spokenText = "meep";
         Intent intent = new Intent(this, DisplayWordActivity.class);
-        intent.putExtra("spokenText", spokenText);
         startActivity(intent);
         super.onActivityResult(requestCode, resultCode, data);
 
     }
-    @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        // Open the options menu right away.
-        displaySpeechRecognizer();
-    }
+
+
+
 
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
