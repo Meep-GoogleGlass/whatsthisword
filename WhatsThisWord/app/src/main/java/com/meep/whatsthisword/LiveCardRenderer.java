@@ -58,7 +58,7 @@ public class LiveCardRenderer implements DirectRenderingCallback {
         mPaint.setTypeface(Typeface.create("sans-serif-thin", Typeface.NORMAL));
         mPaint.setAlpha(0);
 
-        mText = context.getResources().getString(R.string.hello_world);
+        mText = context.getResources().getString(R.string.placeholder);
     }
 
     @Override

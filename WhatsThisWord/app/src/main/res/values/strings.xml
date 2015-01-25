@@ -4,6 +4,7 @@
     <string name="app_name">WhatsThisWord</string>
     <string name="title_activity_translate_word">Translate This Word</string>
     <string name="action_stop">Stop</string>
-    <string name="glass_voice_trigger">what's this word</string>
+    <string name="glass_voice_trigger">what\'s this word</string>
+    <string name="placeholder">ToResolveError</string>
 
 </resources>

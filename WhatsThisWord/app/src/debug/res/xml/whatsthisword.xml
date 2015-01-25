@@ -4,12 +4,7 @@
     <trigger keyword="WHATS_THIS_WORD">
         <constraints
             microphone="true" />
-            <input prompt="@string/glass_voice_prompt"/>
+            <input prompt="@string/glass_voice_trigger"/>
     </trigger>
-    <menu xmlns:android="http://schemas.android.com/apk/res/android">
-        <!-- Use the constants defined in the ContextualMenus.Command enum-->
-        <item
-            android:id="@+id/pizza_menu_item"
-            android:title="@string/find_pizza" />
-    </menu>
+
 </PreferenceScreen>

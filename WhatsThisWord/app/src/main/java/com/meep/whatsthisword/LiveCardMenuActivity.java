@@ -2,22 +2,50 @@ package com.meep.whatsthisword;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.speech.RecognizerIntent;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 /**
  * A transparent {@link Activity} displaying a "Stop" options menu to remove the {@link LiveCard}.
  */
 public class LiveCardMenuActivity extends Activity {
 
+    private static final int SPEECH_REQUEST = 0;
+    private String spokenText;
+    public String getSpokenText(){
+        return spokenText;
+    }
+
+    private void displaySpeechRecognizer() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        startActivityForResult(intent, SPEECH_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        /*if (requestCode == SPEECH_REQUEST && resultCode == RESULT_OK) {
+            List<String> results = data.getStringArrayListExtra(
+                    RecognizerIntent.EXTRA_RESULTS);
+            spokenText = results.get(0);
+            // Do something with spokenText.
+            //Here is where we translate spokenText into
+        }*/
+        spokenText = "meep";
+        super.onActivityResult(requestCode, resultCode, data);
+        
+    }
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         // Open the options menu right away.
-        openOptionsMenu();
+        displaySpeechRecognizer();
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.translate_word, menu);
         return true;
@@ -40,5 +68,5 @@ public class LiveCardMenuActivity extends Activity {
         super.onOptionsMenuClosed(menu);
         // Nothing else to do, finish the Activity.
         finish();
-    }
+    }*/
 }
